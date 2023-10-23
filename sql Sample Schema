@@ -1,0 +1,27 @@
+-- Create the schema
+CREATE SCHEMA IF NOT EXISTS `sports_management` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+-- Use the schema
+USE `sports_management`;
+
+-- Create the `sports` table
+CREATE TABLE IF NOT EXISTS `sports` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `name` VARCHAR(255) NOT NULL,
+  `description` TEXT
+);
+
+-- Create the `players` table
+CREATE TABLE IF NOT EXISTS `players` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `name` VARCHAR(255) NOT NULL,
+  `age` INT NOT NULL,
+  `level` INT NOT NULL,
+  `email` VARCHAR(255) NOT NULL,
+  `gender` ENUM('MALE', 'FEMALE') NOT NULL,
+  `sport_id` INT,
+  FOREIGN KEY (`sport_id`) REFERENCES `sports`(`id`) ON DELETE SET NULL
+);
+
+-- Add an index for faster querying
+CREATE INDEX `idx_sport_id` ON `players`(`sport_id`);
