@@ -10,9 +10,5 @@ import java.util.List;
 public class SportsResponseDTO {
     private String sportName;
     private List<PlayerDTO> players;
-
-
-
-    // Constructors, getters, and setters
 }
 

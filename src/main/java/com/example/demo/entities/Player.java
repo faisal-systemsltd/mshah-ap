@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="player")
+@Table(name="players")
 @Setter
 @Getter
 @NoArgsConstructor
@@ -20,6 +20,7 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
     @Column(nullable = false, unique = true)
     private String email;
 

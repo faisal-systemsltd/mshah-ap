@@ -104,7 +104,7 @@ public class PlayerController {
         }
     }
 
-    @PostMapping("/api/players")
+    @PostMapping
     public ResponseEntity<PlayerDTO> createPlayer(@RequestBody UpdatePlayerRequestDTO requestDTO) {
         Player createdPlayer = playerService.createPlayer(requestDTO);
         PlayerDTO playerDTO = mapPlayerToDTO(createdPlayer);

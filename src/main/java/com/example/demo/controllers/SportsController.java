@@ -8,6 +8,8 @@ import com.example.demo.exceptions.SportsNotFoundException;
 import com.example.demo.services.SportsService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -72,8 +74,8 @@ public class SportsController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Sports> updateSports(@PathVariable Long id, @RequestBody Sports sports) {
-        Sports updatedSports = sportsService.updateSports(id, sports);
+    public ResponseEntity<Sports> updateSports( @RequestBody Sports sports) {
+        Sports updatedSports = sportsService.updateSports(sports);
         return new ResponseEntity<>(updatedSports, HttpStatus.OK);
     }
 
@@ -83,10 +85,10 @@ public class SportsController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @GetMapping
-    public ResponseEntity<List<Sports>> getAllSports() {
-        List<Sports> sportsList = sportsService.getAllSports();
-        return new ResponseEntity<>(sportsList, HttpStatus.OK);
+    @GetMapping("/all")
+    public ResponseEntity<Page<Sports>> getAllSports(Pageable pageable) {
+        Page<Sports> sportsPage = sportsService.getAllSports(pageable);
+        return new ResponseEntity<>(sportsPage, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
