@@ -1,5 +1,7 @@
 Certainly! Here's a sample README that you can use to document the APIs you've created, along with example payloads for testing them using Postman:
-
+# BASIC AUTH
+USERNAME admin
+PASSWORD admin
 # Sports Management API
 
 This API provides endpoints to manage sports and players. You can perform operations like creating sports, updating player sports, retrieving players, and more.
