@@ -34,11 +34,13 @@ public class SportsServiceTest {
 
     @BeforeEach
     public void setUp() {
+        // Define a sample sport for testing
         Sports sport = new Sports();
         sport.setId(1L);
         sport.setName("Soccer");
         sport.setDescription("A popular sport");
 
+        // Stub the repository methods
         lenient().when(sportRepository.findById(1L)).thenReturn(Optional.of(sport));
         lenient().when(sportRepository.save(Mockito.any(Sports.class))).thenAnswer(invocation -> invocation.getArgument(0));
     }
